@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <!-- Meta tags for social media banners, these should be filled in appropriatly as they are your "business card" -->
+  <!-- Replace the content tag with appropriate information -->
+  <meta name="description" content="Bridging the Gap to Real-World Object-Centric Learning">
+  <meta property="og:title" content="DINOSAUR"/>
+  <meta property="og:description" content="Bridging the Gap to Real-World Object-Centric Learning"/>
+  <meta property="og:url" content="https://dinosaur-paper.github.io/"/>
+  <!-- Path to banner image, should be in the path listed below. Optimal dimenssions are 1200X630-->
+  <!-- <meta property="og:image" content="" />
+  <meta property="og:image:width" content="1200"/>
+  <meta property="og:image:height" content="630"/> -->
+
+  <meta name="twitter:title" content="DINOSAUR">
+  <meta name="twitter:description" content="Bridging the Gap to Real-World Object-Centric Learning">
+  <!-- Path to banner image, should be in the path listed below. Optimal dimensions are 1200X600-->
+  <!--<meta name="twitter:image" content="https://zadaianchuk.github.io/videosaur/static/images/sim_loss-1.png">
+  <meta name="twitter:card" content="summary_large_image">-->
+  <!-- Keywords for your paper to be indexed by-->
+  <meta name="keywords" content="object-centric representations, scene decomposition, dinosaur, object-centric learning, real world">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>DINOSAUR</title>
+  <link rel="icon" type="image/x-icon" href="./static/images/avatar.png">
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <!--<script src="https://documentcloud.adobe.com/view-sdk/main.js"></script>-->
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <!-- <script src="./static/js/bulma-carousel.min.js"></script> -->
+  <script src="./static/js/bulma-carousel.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+
+
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <h1 class="title is-1 publication-title">DINOSAUR: Bridging the Gap to Real-World Object-Centric Learning</h1>
+            <div class="is-size-5 publication-authors">
+              <!-- Paper authors -->
+              <span class="author-block">
+                <a href="https://is.mpg.de/person/mseitzer" target="_blank">Maximilian Seitzer</a><sup>1</sup>&nbsp;&nbsp;&nbsp;&nbsp;
+              </span>
+              <span class="author-block">
+                <a href="https://expectationmax.github.io/" target="_blank">Max Horn</a><sup>2</sup>&nbsp;&nbsp;&nbsp;&nbsp;
+              </span>
+              <span class="author-block">
+                <a href="https://zadaianchuk.github.io/" target="_blank">Andrii Zadaianchuk</a><sup>1</sup>&nbsp;&nbsp;&nbsp;&nbsp;
+              </span>
+              <span class="author-block">
+                <a href="https://is.mpg.de/person/dzietlow" target="_blank">Dominik Zietlow</a><sup>2</sup>&nbsp;&nbsp;&nbsp;&nbsp;
+              </span>
+              <span class="author-block">
+                <a href="https://tianjunxiao.com/" target="_blank">Tianjun Xiao</a><sup>2</sup>&nbsp;&nbsp;&nbsp;&nbsp;
+              </span>
+              <span class="author-block">
+                <a href="https://is.mpg.de/~cjsimon" target="_blank">Carl-Johann Simon-Gabriel</a><sup>2</sup>&nbsp;&nbsp;&nbsp;&nbsp;
+              </span>
+              <span class="author-block">
+                <a href="https://hetong007.github.io/" target="_blank">Tong He</a><sup>2</sup>&nbsp;&nbsp;&nbsp;&nbsp;
+              </span>
+              <span class="author-block">
+                Zheng Zhang<sup>2</sup>&nbsp;&nbsp;&nbsp;&nbsp;
+              </span>
+              <span class="author-block">
+                <a href="https://is.mpg.de/~bs" target="_blank">Bernhard Schölkopf</a><sup>2</sup>&nbsp;&nbsp;&nbsp;&nbsp;
+              </span>
+              <span class="author-block">
+                <a href="https://lmb.informatik.uni-freiburg.de/people/brox/index.en.html" target="_blank">Thomas Brox</a><sup>2</sup>&nbsp;&nbsp;&nbsp;&nbsp;
+              </span>
+              <span class="author-block">
+                <a href="https://www.francescolocatello.com/" target="_blank">Francesco Locatello</a><sup>2</sup>
+              </span>
+            </div>
+
+            <div class="is-size-5 publication-authors">
+              <span class="author-block"><sup>1</sup>Max Planck Institute for Intelligent Systems, Tübingen</span><br />
+              <span class="author-block"><sup>2</sup>Amazon AWS, Tübingen</span>
+            </div>
+            <div class="is-size-4" style="padding-top: 0.25em;">
+              <span class="author-block">Published at ICLR 2022</span>
+            </div>
+            <div class="column has-text-centered">
+              <div class="publication-links">
+              <!-- OpenReview link -->
+              <span class="link-block">
+                <a href="https://openreview.net/forum?id=b9tUk-f_aG" target="_blank" class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                    <i class="far fa-circle"></i>
+                  </span>
+                  <span>OpenReview</span>
+                </a>
+                &nbsp;
+              </span>
+              
+              <span class="link-block">
+                <a href="https://openreview.net/pdf?id=b9tUk-f_aG" target="_blank" class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                    <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>PDF</span>
+                </a>
+                &nbsp;
+              </span>                
+
+              <!-- ArXiv abstract Link -->
+              <span class="link-block">
+                <a href="https://arxiv.org/abs/2209.14860" target="_blank" class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                    <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+                &nbsp;
+              </span>
+
+              <!-- Github link -->
+              <span class="link-block">
+                <a href="https://github.com/amazon-science/object-centric-learning-framework" target="_blank"
+                class="external-link button is-normal is-rounded is-dark">
+                <span class="icon">
+                  <i class="fab fa-github"></i>
+                </span>
+                <span>Code</span>
+                </a>
+                &nbsp;
+              </span>
+
+              <!-- Github link -->
+              <span class="link-block">
+                <a href="mailto:maximilian.seitzer@tuebingen.mpg.de" target="_blank"
+                class="external-link button is-normal is-rounded is-dark">
+                <span class="icon">
+                  <i class="fa fa-envelope"></i>
+                </span>
+                <span>Contact</span>
+                </a>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+  <!-- Teaser video-->
+  <!--<section class="hero teaser">
+    <div class="container is-max-desktop">
+      <div class="hero-body">
+        <video poster="" id="tree" autoplay controls muted loop height="100%">
+          <source src=""
+          type="video/mp4">
+        </video>
+        <h2 class="subtitle has-text-centered">
+          
+        </h2>
+      </div>
+    </div>
+  </section>-->
+  <!-- End teaser video -->
+
+  <!-- Paper abstract -->
+  <section class="section hero is-light">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Summary</h2>
+          <div class="content has-text-justified">
+            <p>
+              DINOSAUR is a model for unsupervised object-centric representation learning. 
+              This means that it learns a set representation that binds different entities in the input to separate vectors in the representation, purely from images alone.
+              DINOSAUR achieves this by making use of the DINO method and other self-supervised learning techniques.
+              While previous previous object-centric learning methods were mostly constrained to simple, synthetic datasets, DINOSAUR enables, for the first time, learning object-centric representations on complex, real-world images.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- End paper abstract -->
+
+  <section class="hero is-small">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <h2 class="title is-3">Model</h2>
+        <div class="columns is-centered has-text-centered">
+          <div class="column is-four-fifths">
+            <div style="text-align: center;">
+              <img src="./static/images/model.png" style="width: 90%;" alt="DINOSAUR model"/>
+            </div>
+            <div class="content has-text-justified"><br />
+              The DINOSAUR model. The image is processed into a set of patch features by a frozen DINO ViT model (pre-trained using the self-supervised DINO method)
+              and encoded either by the same DINO ViT or a separate encoder network. Slot attention groups the encoded features
+              into a set of slots. The model is trained by reconstructing the DINO features from the slots.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Image carousel -->
+  <section class="hero is-small">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <h2 class="title is-3">Examples</h2>
+        <div class="columns is-centered has-text-centered">
+          <div class="column is-four-fifths">
+            <div id="results-carousel" class="carousel results-carousel">
+              <div class="item">
+                <img src="./static/images/examples_coco.jpg" style="width: 95%;" alt="DINOSAUR examples on COCO"/>
+                <h2 class="subtitle has-text-centered"> <br>
+                  DINOSAUR examples on COCO.
+                </h2>
+              </div>
+              <div class="item">
+                <img src="./static/images/examples_movi_c.jpg" style="width: 40%;"  alt="DINOSAUR examples on MOVi-C"/>
+                <h2 class="subtitle has-text-centered"> <br>
+                  DINOSAUR examples on MOVi-C.
+                </h2>
+              </div>
+              <div class="item">
+                <img src="./static/images/examples_movi_e.jpg" style="width: 95%;" alt="DINOSAUR examples on MOVi-E"/>
+                <h2 class="subtitle has-text-centered"> <br>
+                  DINOSAUR examples on MOVi-E.
+                </h2>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- End image carousel -->
+
+  <section class="hero is-small">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <h2 class="title is-3">Reference Results for Object Discovery</h2>
+        <div>
+          This section is supposed to serve as a reference for the results different versions of DINOSAUR can achieve on the <em>object discovery task</em>.
+          Note that the numbers vary quite a bit depending on the encoder, the decoder, the number of slots and other hyperparameters.
+          In particular, the MLP decoder generally achieves higher FG-ARI than the Transformer decoder, and vice-versa with mBO.
+          If you reimplement DINOSAUR, your model should be able to achieve similar numbers as the ones in the table.
+          If you compare with DINOSAUR in your own work, make sure you either have a proper reimplementation, or simply directly use the numbers stated here.
+          It is generally advisable to use the strongest version of a baseline in a given reference class.
+        </div>
+        <br />
+        <div>
+          We split the results into two parts: results from the original DINOSAUR paper, and results from follow-up work, using the DINOSAUR architecture but potentially achieving stronger results. 
+          If you would like to add your DINOSAUR-based results to this table, feel free to send us an email.
+          We only accept results that have a reproducible code implementation associated.
+        </div>
+        <br />
+        <div style="padding-bottom: 0.5em;"><h3 class="title is-4">DINOSAUR Paper</h3></div>
+        <div class="columns is-centered has-text-centered">
+          <div class="column">
+            <table class="table is-fullwidth is-hoverable">
+              <thead>
+                <tr>
+                  <th>Dataset</th>
+                  <th>Encoder</th>
+                  <th>Decoder</th>
+                  <th>#Slots</th>
+                  <th>FG-ARI</th>
+                  <th>mBO</th>
+                  <th>Reference</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>MOVi-C<sup>1</sup></td>
+                  <td>ViT-B/16, DINO</td>
+                  <td>MLP</td>
+                  <td>11</td>
+                  <td>66.0</td>
+                  <td>35.0</td>
+                  <td>Table 3</td>
+                </tr>
+                <tr>
+                  <td>MOVi-C<sup>1</sup></td>
+                  <td>ViT-B/16, DINO</td>
+                  <td>Transformer</td>
+                  <td>11</td>
+                  <td>55.7</td>
+                  <td>42.4</td>
+                  <td>Table 3</td>
+                </tr>
+                <tr>
+                  <td>MOVi-C<sup>1</sup></td>
+                  <td>ViT-S/8, DINO</td>
+                  <td>MLP</td>
+                  <td>11</td>
+                  <td>67.2</td>
+                  <td>38.6</td>
+                  <td>Figure 3</td>
+                </tr>
+                <tr>
+                  <td>MOVi-C<sup>1</sup></td>
+                  <td>ViT-B/8, DINO</td>
+                  <td>MLP</td>
+                  <td>11</td>
+                  <td>68.6</td>
+                  <td>39.1</td>
+                  <td>Figure 3</td>
+                </tr>
+                <tr>
+                  <td>MOVi-E<sup>1</sup></td>
+                  <td>ViT-S/8, DINO</td>
+                  <td>MLP</td>
+                  <td>11</td>
+                  <td>76.7</td>
+                  <td>29.7</td>
+                  <td>Table 13</td>
+                </tr>
+                <tr>
+                  <td>MOVi-E<sup>1</sup></td>
+                  <td>ViT-S/8, DINO</td>
+                  <td>MLP</td>
+                  <td>24</td>
+                  <td>64.7</td>
+                  <td>34.1</td>
+                  <td>Figure 3</td>
+                </tr>
+                <tr>
+                  <td>MOVi-E<sup>1</sup></td>
+                  <td>ViT-B/8, DINO</td>
+                  <td>MLP</td>
+                  <td>11</td>
+                  <td>79.3</td>
+                  <td>32.7</td>
+                  <td>Table 13</td>
+                </tr>
+                <tr>
+                  <td>MOVi-E<sup>1</sup></td>
+                  <td>ViT-B/8, DINO</td>
+                  <td>MLP</td>
+                  <td>24</td>
+                  <td>65.1</td>
+                  <td>35.5</td>
+                  <td>Figure 3</td>
+                </tr>
+                <tr>
+                  <td>COCO<sup>2</sup></td>
+                  <td>ViT-S/16, DINO</td>
+                  <td>Transformer</td>
+                  <td>7</td>
+                  <td>36.9</td>
+                  <td>29.7</td>
+                  <td>Table 11</td>
+                </tr>
+                <tr>
+                  <td>COCO<sup>2</sup></td>
+                  <td>ViT-B/16, DINO</td>
+                  <td>MLP</td>
+                  <td>7</td>
+                  <td>40.5</td>
+                  <td>27.7</td>
+                  <td>Table 12</td>
+                </tr>
+                <tr>
+                  <td>COCO<sup>2</sup></td>
+                  <td>ViT-B/16, MAE</td>
+                  <td>MLP</td>
+                  <td>7</td>
+                  <td>42.3</td>
+                  <td>29.1</td>
+                  <td>Table 12</td>
+                </tr>
+                <tr>
+                  <td>COCO<sup>2</sup></td>
+                  <td>ViT-B/16, DINO</td>
+                  <td>Transformer</td>
+                  <td>7</td>
+                  <td>34.1</td>
+                  <td>31.6</td>
+                  <td>Figure 5</td>
+                </tr>
+                <tr>
+                  <td>COCO<sup>2</sup></td>
+                  <td>ViT-S/8, DINO</td>
+                  <td>Transformer</td>
+                  <td>7</td>
+                  <td>34.3</td>
+                  <td>32.3</td>
+                  <td>Table 11</td>
+                </tr>
+                <tr>
+                  <td>PASCAL 2012<sup>2</sup></td>
+                  <td>ViT-B/16, DINO</td>
+                  <td>MLP</td>
+                  <td>6</td>
+                  <td>24.6</td>
+                  <td>39.5</td>
+                  <td>Table 3</td>
+                </tr>
+                <tr>
+                  <td>PASCAL 2012<sup>2</sup></td>
+                  <td>ViT-B/16, DINO</td>
+                  <td>Transformer</td>
+                  <td>6</td>
+                  <td>24.8</td>
+                  <td>44.0</td>
+                  <td>Figure 5</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+          
+        <div style="padding-bottom: 0.5em;"><h3 class="title is-4">Follow-up Work</h3></div>
+        <div class="columns is-centered has-text-centered">
+          <div class="column">
+            <table class="table is-fullwidth is-hoverable">
+              <thead>
+                <tr>
+                  <th>Dataset</th>
+                  <th>Encoder</th>
+                  <th>Decoder</th>
+                  <th>#Slots</th>
+                  <th>FG-ARI</th>
+                  <th>mBO</th>
+                  <th>Reference</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>COCO<sup>3</sup></td>
+                  <td>ViT-B/14, DINOv2</td>
+                  <td>MLP</td>
+                  <td>7</td>
+                  <td>45.6</td>
+                  <td>29.6</td>
+                  <td><a href="https://github.com/martius-lab/videosaur/">VideoSAUR code release</a></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <br />
+        <div>
+          <sup>1</sup>: 128x128 mask resolution<br />
+          <sup>2</sup>: 320x320 mask resolution, central crops<br />
+          <sup>3</sup>: 224x224 mask resolution, central crops
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="hero is-small">
+    <div class="hero-body">
+      <div class="container content is-max-desktop">
+        <h2 class="title is-3">Implementations</h2>
+        There are currently two officially sanctioned implementations:
+        <ul>
+          <li><a href="https://github.com/amazon-science/object-centric-learning-framework">Object-centric Learning Framework</a>: Official codebase used for producing the DINOSAUR experiments</li>
+          <li><a href="https://github.com/martius-lab/videosaur/">VideoSAUR</a>: Codebase for the <a href="https://arxiv.org/abs/2306.04829">follow-up project VideoSAUR</a>, also containing a DINOSAUR implementation</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="hero is-small">
+    <div class="hero-body">
+      <div class="container content is-max-desktop">
+        <h2 class="title is-3">Related Projects</h2>
+        <ul>
+          <li><a href="https://arxiv.org/abs/2306.04829">VideoSAUR (NeurIPS 2023)</a>: object-centric representations for real-world videos using a DINOSAUR-style framework and a novel temporal similarity loss</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Image carousel -->
+  <!--<section class="hero is-small">
+    <div class="hero-body">
+      <div class="container">
+        <div id="results-carousel" class="carousel results-carousel">
+        <div class="item">
+          <img src="./static/images/model.png" height="200" alt="DINOSAUR model"/>
+          
+          <h2 class="subtitle has-text-centered"> <br>
+            
+          </h2>
+        </div>
+    </div>
+  </div>
+  </div>
+  </section>-->
+  <!-- End image carousel -->
+
+  <!-- Youtube video -->
+  <!-- <section class="hero is-small is-light">
+    <div class="hero-body">
+      <div class="container">
+
+        <h2 class="title is-3">Video Presentation</h2>
+        <div class="columns is-centered has-text-centered">
+          <div class="column is-four-fifths">
+            
+            <div class="publication-video">
+
+              <iframe src="" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section> -->
+  <!-- End youtube video -->
+
+  <!-- Paper poster -->
+  <!--
+  <section class="hero is-small is-light">
+    <div class="hero-body">
+      <div class="container">
+        <h2 class="title">Poster</h2>
+        <iframe src="" width="100%" height="756">
+            </iframe>
+          
+        </div>
+      </div>
+    </section>-->
+  <!--End paper poster -->
+
+
+  <!--BibTex citation -->
+  <section class="section" id="BibTeX">
+      <div class="container is-max-desktop content">
+        <h2 class="title">BibTeX</h2>
+        <pre><code>
+            @inproceedings{seitzer2023bridging,
+              title={Bridging the Gap to Real-World Object-Centric Learning},
+              author={Maximilian Seitzer and Max Horn and Andrii Zadaianchuk and Dominik Zietlow and Tianjun Xiao and Carl-Johann Simon-Gabriel and Tong He and Zheng Zhang and Bernhard Sch{\"o}lkopf and Thomas Brox and Francesco Locatello},
+              booktitle={The Eleventh International Conference on Learning Representations},
+              year={2023},
+              url={https://openreview.net/forum?id=b9tUk-f_aG}
+            }
+        </code></pre>
+      </div>
+  </section>
+  <!--End BibTex citation -->
+
+  <footer class="footer">
+    <div class="container">
+      <div class="columns is-centered">
+        <div class="column is-8">
+          <div class="content">
+
+            <p>
+              This page was built using the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank">Academic Project Page Template</a>.
+              <!-- You are free to borrow the of this website, we just ask that you link back to this page in the footer. <br> 
+              This website is licensed under a <a rel="license"  href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Creative
+              Commons Attribution-ShareAlike 4.0 International License</a>. -->
+            </p>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
